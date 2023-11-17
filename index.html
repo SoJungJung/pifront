@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upload Audio File</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body>
+    <h1>Upload Your MP3 File</h1>
+    <form id="uploadForm">
+      <input type="file" name="file" accept="audio/*" />
+      <input type="button" value="Upload" onclick="uploadFile()" />
+    </form>
+
+    <p>Brett is always watching you</p>
+    <img
+      src="https://avatars.githubusercontent.com/u/3577708?v=4"
+      alt="Sample Image"
+    />
+    <script>
+      function uploadFile() {
+        var form = document.getElementById("uploadForm");
+        var fileInput = form.querySelector("input[type=file]");
+        var file = fileInput.files[0];
+        var formData = new FormData();
+        formData.append("file", file);
+        console.log(formData);
+
+        fetch("http://127.0.0.1:5001/upload", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>
