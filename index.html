@@ -27,7 +27,7 @@
         formData.append("file", file);
         console.log(formData);
 
-        fetch("https://198.40.29.7:5001/upload", {
+        fetch("http://198.40.29.7:5001/upload", {
           method: "POST",
           body: formData,
         })
