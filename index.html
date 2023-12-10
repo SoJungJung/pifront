@@ -28,7 +28,10 @@
         formData.append("file", file);
         console.log(formData);
 
-        fetch("https://05cf-198-40-29-4.ngrok-free.app/upload", {
+        const corsAnywhereUrl = 'https://mp3downloaderproxy.herokuapp.com/';
+        const targetUrl = 'https://05cf-198-40-29-4.ngrok-free.app/upload';
+
+        fetch(corsAnywhereUrl + targetUrl, {
           method: "POST",
           body: formData,
         })
